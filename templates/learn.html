@@ -1,0 +1,149 @@
+<!-- Anthony Krivonos (ak4483), COMS 4170 -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'learn.js') }}"></script>
+<script>
+    const dishData = {{data|tojson}}
+    const cabinet = {{cabinet|tojson}}
+</script>
+<style>
+    /* List Styles */
+    ul {
+        list-style: none;
+    }
+    ul li::before {
+        content: "\2022";
+        color: #434343;
+        font-weight: bold;
+        font-size: 1.4em;
+        width: 1em;
+        display: inline-block;
+        margin-left: -1.4em;
+    }    
+    .dish-img {
+        width: 18vw;
+        height: 18vw;
+        min-width: 140px;
+        min-height: 140px;
+        border-radius: 50%;
+        margin-bottom: -3vw;
+        align-self: flex-end;
+        object-fit: cover;
+    }
+    .bowl-col {
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .bowl-col-bottom {
+        align-items: center;
+    }
+    #bowl {
+        -webkit-user-drag: none;
+        width: 60%;
+        transition: transform 0.25s;
+    }
+    .droppable {
+        transform: scale(1.2);
+    }
+    .undroppable {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    .aboutta-drop {
+        transform: scale(1.7);
+    }
+    .draggable {
+        transform: scale(1.4);
+    }
+    .cabinet-col {
+        position: relative;
+    }
+    .cabinet-col .bar {
+        position: absolute;
+        width: 1.5em;
+        border-radius: .75em;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: -1;
+    }
+    .cabinet {
+        height: 100%;
+        justify-content: space-between !important;
+    }
+    .ingredient {
+        transition: transform 0.25s;
+        cursor: move;
+    }
+    .ingredient:hover {
+        transform: scale(1.2);
+    }
+    .ingredient-name {
+        align-items: center;
+    }
+    .ingredient-col {
+        justify-content: flex-end;
+    }
+    .ingredient-col > .ingredient {
+        width: 2.5rem;
+        right: 0;
+        -webkit-user-drag: none;
+    }
+    #step {
+        border-radius: 1rem;
+        background-color: white;
+    }
+    #ingredient-list {
+        text-align: center;
+        width: 100%;
+    }
+</style>
+
+<div class="container p-4">
+    <div class="row mt-4">
+        <div class="col-5">
+            <div class="d-flex flex-column">
+                <img class="dish-img raised" src="{{data.imageUrl}}" />
+                <div class="text-uppercase color-red bold font-sm">Currently Making</div>
+                <div class="title bold font-lg">{{data.name}}</div>
+                <div class="title font-sm">(Russian: {{data.russianName}})</div>
+                <div class="font-sm color-gray mt-2 mb-3">{{data.tagline}}</div>
+                <div class="title font-md medium">Ingredients</div>
+                <div class="mt-2">
+                    <ul>
+                        {% for ingredient in data.ingredients %}
+                            <li class="color-gray">{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 row">
+            <div class="col-8 bowl-col d-flex flex-column">
+                <div id="step" class="raised p-3 mt-4"></div>
+                <div class="bowl-col-bottom d-flex flex-column">
+                    <img id="bowl" src="{{ url_for('static', filename = 'assets/bowl.svg') }}" />
+                    <div id="ingredient-list" class="title mt-4 text-xs"></div>
+                </div>
+            </div>
+            <div class="col-4 cabinet-col">
+                <div class="cabinet d-flex flex-column">
+                    {% for ingredient in cabinet %}
+                        <div class="row">
+                            <div class="col-6 ingredient-col d-flex flex-row">
+                                <img class="ingredient" ingredient="{{ingredient}}" src="{{ url_for('static', filename = 'assets/'+ingredient+'.svg') }}" />
+                            </div>
+                            <div ingredient="{{ingredient}}" class="col-6 ingredient-name d-flex flex-row">{{ingredient}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="bar bg-light-gray"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

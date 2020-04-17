@@ -1,9 +1,8 @@
 <!-- Anthony Krivonos (ak4483), COMS 4170 -->
-<!-- Homework 6 -->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>N(erd)BA</title>
+        <title>Яecipe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- JQuery -->
@@ -19,106 +18,97 @@
         />
         <script type="text/javascript" src="{{ url_for('static', filename = 'shared.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename = 'components/navbar.js') }}"></script>
+        <!-- Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+        <!-- Universal Styles -->
         <style>
-            .semibold {
-                font-weight: 600;
-            }
-            .bold {
-                font-weight: 800;
-            }
-            .text-orange {
-                color: orange;
-            }
-            a, a:hover {
-                color: black;
-            }
-            .name-text {
-                font-size: 20pt;
-                margin-bottom: -4px;
-            }
-            .country-text {
-                font-size: 14pt;
-                margin-bottom: -2px;
-            }
-            .full-width {
-                width: 100%;
-            }
-            footer {
-                font-size: 10pt;
-            }
-            .edit-button, .delete-button {
-                background: none;
-                border: none;
-                cursor: hand; cursor: pointer;
-            }
-            .error-border {
-                border: solid 2px #dc3545;
-            }
-            .avatar {
-                border-radius: 4px;
-                object-fit: cover !important;
-                object-position: top !important;
-                width: 200px;
-                height: 160px;
-            }
-            .player.card {
-                box-shadow: 0 0 1px 0 rgba(0,0,0,0.06), 0 0 1px 0 rgba(0,0,0,0.06);
-                transition: all 0.2s cubic-bezier(.25,.25,.25,.25);
-            }
-            .player.card:hover {
-                box-shadow: 0 0 8px 1px rgba(0,0,0,0.06), 0 0 8px 1px rgba(0,0,0,0.06);
-            }
-            .no-shrink {
-                flex: 1 0 auto;
-            }
-            .jumbotron {
-                height: 300px;
+            body {
+                font-family: 'Montserrat', sans-serif;
+                color: #434343 !important;
                 position: relative;
                 overflow: hidden;
+                min-height: 100vh;
+                margin: 0;
             }
-            #splash-logo {
-                object-position: center;
-                object-fit: cover;
-                opacity: 0.4;
-                top: 0; bottom: 0; left: 0; right: 0;
-                z-index: 1;
-                width: 100%;
+
+            /* Font Styles */
+            .title {
+                font-family: 'Playfair Display', serif;
+                line-height: 1.4;
             }
-            .splash-text {
-                top: 0; bottom: 0; left: 0; right: 0;
-                z-index: 2;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+            .bold {
+                font-weight: 700;
             }
-            .highlighted {
-                background-color: #ffcf75;
+            .medium {
+                font-weight: 500;
             }
+            .font-lg {
+                font-size: 1.8em;
+            }
+            .font-md {
+                font-size: 1.2em;
+            }
+            .font-sm {
+                font-size: 0.8em;
+            }
+            .font-xs {
+                font-size: 0.6em;
+            }
+
+            /* Color Styles */
+            .color-red {
+                color: #ea9999ff !important;
+            }
+            .color-pink {
+                color: #f4ccccff !important;
+            }
+            .color-gray {
+                color: #b7b7b7 !important;
+            }
+            .color-green {
+                color: #93c47d !important;
+            }
+            .color-light-gray {
+                color: #efefefff !important;
+            }
+            .bg-red {
+                background-color: #ea9999ff !important;
+            }
+            .bg-pink {
+                background-color: #f4ccccff !important;
+            }
+            .bg-gray {
+                background-color: #b7b7b7 !important;
+            }
+            .bg-light-gray {
+                background-color: #efefefff !important;
+            }
+            .bg-green {
+                background-color: #93c47d !important;
+            }
+        
+            /* Shadow Styles */
+            .raised {
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            }
+            .lowered {
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            }
+
         </style>
     </head>
     <body>
-        <div class="container p-4">
-            {% block splash %}
-            {% endblock %}
-            <div class="d-flex row">
-                <div class="col-3">
-                    <a class="btn btn-muted d-flex p-0" href="/">
-                        <div class="h1 bold p-0">🏀 N<span class="h2">(erd)</span>BA</div>    
-                    </a>
-                </div>
-                <div class="col-9 d-flex justify-content-stretch align-items-center">
-                    <input id="search-input" type="text" class="form-control" placeholder="Search for a player or team (i.e. LeBron James)" />
-                    <button id="search-button" class="btn btn-primary ml-2 no-shrink">
-                        Go
-                    </button>
-                    <button id="create-button" class="btn btn-muted text-success ml-2 no-shrink">
-                        Create Player
-                    </button>
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-light bg-light title bold pl-4 pr-4">
+                <a class="navbar-brand font-md" href="#">Яecipe</a>
+            </nav>
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+                <div class="font-xs">
+                    Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, and <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>.
                 </div>
             </div>
-            <hr />
-            {% block content %}
-            {% endblock %}
         </div>
     </body>
 </html>
