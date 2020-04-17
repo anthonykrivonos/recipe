@@ -1,0 +1,106 @@
+<!-- Anthony Krivonos (ak4483), COMS 4170 -->
+<!-- Homework 6 -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'view.js') }}"></script>
+<script>
+    let player = {{player|tojson}}
+</script>
+
+<div id="player" class="mt-4">
+    <div class="card pl-1 pr-1 pt-3 pb-2 mb-2">
+        <div class="d-flex align-items-top">
+            <img class="player-img avatar ml-3 mr-3" src="{{player.image}}" alt="{{player.firstName}} {{player.lastName}}" />
+            <div class="row full-width p-2">
+                <div class="col-8">
+                    <div class="name-text bold full-width">{{player.firstName}} {{player.lastName}}</div>
+                    <div>
+                        <div class="text-uppercase"><a id="team-name" team-name="{{player.team}}" class="bold team-text" href="javascript:void(0);">{{player.team}}</a> - <a position="{{player.position}}" class="position text-muted" href="javascript:void(0);">{{player.position}}</a></div>
+                    </div>
+                </div>
+                <div class="pr-4 col-4 text-right mt-2">
+                    <div class="country-text">{{player.country}}</div>
+                    <div class="text-muted">College: {{player.school}}</div>
+                </div>
+                <div id="box-description" class="pr-2 col-12 pt-3">
+                    <span id="description">
+                        {{player.description}}
+                    </span>
+                    <button id="edit-description-button" class="edit-button p-0 m-0 text-primary">
+                        <img width="18" height="18" src="{{ url_for('static', filename = 'assets/edit.svg') }}" alt="Edit" />    
+                    </button>
+                </div>
+                <div id="edit-description" class="pr-2 col-12 pt-2">
+                    <textarea id="edit-description-box" class="card full-width" rows="7">{{player.description}}</textarea>
+                    <div class="d-flex justify-content-between p-1">
+                        <div id="edit-description-error" for="edit-description-box" class="editm-0 p-0 mt-1 text-danger"></div>
+                        <div>
+                            <button id="description-discard-changes-button" class="edit-button p-0 m-0 text-warning">Discard Changes</button>
+                            <button id="description-done-button" class="edit-button p-0 m-0 ml-2 text-primary">Done</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="pr-2 col-12 h4 mt-4 semibold mb-0">This Season</div>
+                <div class="row m-0 col-12 pl-2 pr-2 pb-2 pt-1">
+                    <div class="p-2 text-center col-4">
+                        <div class="card p-2">
+                            <div class="bold text-dark">PTS</div>
+                            <div>
+                                <span id="pts">{{player.pts}}</span>
+                                <button id="edit-pts-button" class="edit-button p-0 m-0 text-primary">
+                                    <img width="18" height="18" src="{{ url_for('static', filename = 'assets/edit.svg') }}" alt="Edit" />    
+                                </button>    
+                            </div>
+                            <div id="edit-group-pts">
+                                <input type="text" class="edit form-control text-center" id="edit-pts" placeholder="PTS" />
+                                <button id="pts-discard-changes-button" class="edit-button p-0 m-0 text-warning">Discard</button>
+                                <button id="pts-done-button" class="edit-button p-0 m-0 ml-2 text-primary">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 text-center col-4">
+                        <div class="card p-2">
+                            <div class="bold text-dark">AST</div>
+                            <div> 
+                                <span id="ast">{{player.ast}}</span>
+                                <button id="edit-ast-button" class="edit-button p-0 m-0 text-primary">
+                                    <img width="18" height="18" src="{{ url_for('static', filename = 'assets/edit.svg') }}" alt="Edit" />    
+                                </button>
+                            </div>
+                            <div id="edit-group-ast">
+                                <input type="text" class="edit form-control text-center" id="edit-ast" placeholder="AST" />
+                                <button id="ast-discard-changes-button" class="edit-button p-0 m-0 text-warning">Discard</button>
+                                <button id="ast-done-button" class="edit-button p-0 m-0 ml-2 text-primary">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 text-center col-4">
+                        <div class="card p-2">
+                            <div class="bold text-dark">REB</div>
+                            <div>
+                                <span id="reb">{{player.reb}}</span>
+                                <button id="edit-reb-button" class="edit-button p-0 m-0 text-primary">
+                                    <img width="18" height="18" src="{{ url_for('static', filename = 'assets/edit.svg') }}" alt="Edit" />    
+                                </button>
+                            </div>
+                            <div id="edit-group-reb">
+                                <input type="text" class="edit form-control text-center" id="edit-reb" placeholder="REB" />
+                                <button id="reb-discard-changes-button" class="edit-button p-0 m-0 text-warning">Discard</button>
+                                <button id="reb-done-button" class="edit-button p-0 m-0 ml-2 text-primary">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="games" class="col-12">
+                </div>
+                <footer class="pt-2 pl-3 pr-4 text-muted">
+                    NBA stats and data courtesy of <a class="semibold" href="https://pypi.org/project/nba-api/">NBA API</a> and images courtesy of <a class="semibold" href="https://www.qwant.com/">Qwant</a>.
+                    Descriptions taken from players' <a class="semibold" href="https://wikipedia.com">Wikipedia</a> pages using the open source Wikipedia API.
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

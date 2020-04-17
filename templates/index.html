@@ -1,0 +1,30 @@
+<!-- Anthony Krivonos (ak4483), COMS 4170 -->
+<!-- Homework 6 -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'index.js') }}"></script>
+<script>
+    let playerData = {{data|tojson}}
+    const splashImage = `{{splash}}`
+</script>
+
+<div class="container pt-0 pl-4 pr-4 pb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3 ml-2">
+        <div id="results" class="h6 p-0 m-0 text-dark"></div>
+    </div>
+    <div id="players">
+    </div>
+</div>
+{% endblock %}
+
+{% block splash %}
+<div class="jumbotron jumbotron-fluid p-0 bg-dark">
+    <img id="splash-logo" class="position-absolute" alt="N(erd)BA Logo" />
+    <div class="splash-text container text-center text-white position-absolute">
+        <div class="h2 text-uppercase bold">Your one-stop shop for basketball stats.</div>
+        <div>🏀 N(erd)BA</div>
+    </div>
+</div>
+{% endblock %}
