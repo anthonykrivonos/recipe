@@ -1,0 +1,26 @@
+<!-- Anthony Krivonos (ak4483), COMS 4170 -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'leaderboard.js') }}"></script>
+<script>
+    const leaderboard = {{leaderboard|tojson}}
+</script>
+<style>
+    .container {
+        height: 70vh !important;
+    }
+    #table {
+        overflow: auto;
+    }
+</style>
+
+<div class="container p-4">
+    <div class="d-flex flex-column text-center mt-4">
+        <div class="title bold font-xl">Яecipe</div>
+        <div class="font-sm color-gray mt-3">Leaderboard</div>
+        <div id="table" class="mt-4"></div>
+    </div>
+</div>
+{% endblock %}

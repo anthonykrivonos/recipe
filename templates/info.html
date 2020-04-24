@@ -1,0 +1,82 @@
+<!-- Anthony Krivonos (ak4483), COMS 4170 -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'info.js') }}"></script>
+<script>
+    const dishData = {{data|tojson}}
+</script>
+<style>
+    .container {
+        height: 80vh;
+    }
+    /* List Styles */
+    ul {
+        list-style: none;
+    }
+    ul li::before {
+        content: "\2022";
+        color: #434343;
+        font-weight: bold;
+        font-size: 1.4em;
+        width: 1em;
+        display: inline-block;
+        margin-left: -1.4em;
+    }    
+    .dish-img {
+        width: 24vw;
+        height: 24vw;
+        min-width: 140px;
+        min-height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .tags {
+        align-self: self-start;
+    }
+    .tag {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 100px;
+    }
+</style>
+
+<div class="container p-4 d-flex flex-column justify-content-center">
+    <div class="row mt-4">
+        <div class="col-7">
+            <div class="d-flex flex-column">
+                <div class="title bold font-lg">{{data.name}}</div>
+                <div class="title font-sm">(Russian: {{data.russianName}})</div>
+                <div class="font-sm color-gray mt-2 mb-3">{{data.tagline}}</div>
+                <div class="tags pb-4">
+                    {% for tag in data.tags %}
+                        <div class="bg-light-gray tag">{{ tag }}</div>
+                    {% endfor %}
+                </div>
+                <div class="title font-md">Origin</div>
+                <div class="font-sm color-gray mt-2 mb-3">{{data.description}}</div>
+                <div class="title font-md medium">Ingredients</div>
+                <div class="mt-2">
+                    <ul>
+                        {% for ingredient in data.ingredients %}
+                            <li class="color-gray">{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="align-self-end">
+                    <button id="back" class="btn bg-white mr-2">Go Back</button>
+                    <button id="learn" class="btn bg-red color-white">Start Cookin'</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-center">
+                <img class="dish-img raised" src="{{data.imageUrl}}" alt="{{data.name}}" />
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

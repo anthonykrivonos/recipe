@@ -62,6 +62,27 @@ const updateStep = number => {
             `)
             // Add this recipe to the list of learned recipes
             addLearnedRecipe(dishData.id)
+            // Show an alert
+            let quizIds = getLearnedRecipes()
+            const canGoToQuiz = quizIds.length >= 3
+            showAlert('Nice work!', `You've just made ${dishData.name}.`, canGoToQuiz ? 'Quiz Me' : 'Continue Learning', canGoToQuiz ? 'Continue Learning' : 'Home', 
+                () => {
+                    if (canGoToQuiz) {
+                        shuffle(quizIds)
+                        quizIds = quizIds.slice(0, 3).join(',')
+                        navigate(`/quiz/${quizIds}`)
+                    } else {
+                        navigate(`/browse`)
+                    }
+                },
+                () => {
+                    if (canGoToQuiz) {
+                        navigate(`/browse`)
+                    } else {
+                        navigate(`/`)
+                    }
+                }
+            )
             confetti()
         }
     }
@@ -143,7 +164,8 @@ const onDragOut = () => {
 $(document).ready(() => {
     // First step in the recipe
     updateStep(1)
-    
+
+    $("#back").click(() => navigate(`/info/${dishData.id}`))
     
     $('#bowl-dropzone').droppable( {
         drop: onDrop,

@@ -34,7 +34,7 @@ const renderDishes = () => {
         </div>
         `
     }).join(''))
-    $(`.dish-card`).click(function () { navigate(`/learn/${$(this).attr('dish-id')}`) })
+    $(`.dish-card`).click(function () { navigate(`/info/${$(this).attr('dish-id')}`) })
 }
 
 const updateQuery = tag => {

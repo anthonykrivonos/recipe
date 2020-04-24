@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-    $("#browse").click(() => {
-        navigate('/browse')
-    })
-
-    $("#quiz").click(() => {
-        navigate('/quiz')
-    })
+    // Gets functionality for buttons from components/navbar.js
 
 })

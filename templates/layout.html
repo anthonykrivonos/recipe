@@ -16,8 +16,13 @@
             integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
             crossorigin="anonymous"
         />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- Local Scripts -->
         <script type="text/javascript" src="{{ url_for('static', filename = 'shared.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename = 'components/navbar.js') }}"></script>
+        <script>
+            const count = parseInt({{count}})
+        </script>
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
         <!-- Universal Styles -->
@@ -37,6 +42,34 @@
                 bottom: 0;
                 text-align: right;
                 padding: 5em;
+            }
+
+            /* Alert Styles */
+            .modal-content {
+                border-radius: 32px;
+            }
+            .modal-body {
+                padding-top: 16px;
+                padding-bottom: 0px;
+                line-height: 1.6;
+            }
+            .modal {
+                text-align: center;
+                padding: 0!important;
+            }
+
+            .modal:before {
+                content: '';
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                margin-right: -4px; /* Adjusts for spacing */
+            }
+
+            .modal-dialog {
+                display: inline-block;
+                text-align: left;
+                vertical-align: middle;
             }
 
             /* Font Styles */
@@ -91,6 +124,9 @@
             .color-white {
                 color: white !important;
             }
+            .color-offwhite {
+                color: #fafafa !important;
+            }
             .bg-red {
                 background-color: #ea9999ff !important;
             }
@@ -109,12 +145,16 @@
             .bg-white {
                 background-color: white !important;
             }
+            .bg-offwhite {
+                background-color: #fafafa !important;
+            }
         
             /* Shadow Styles */
-            .raised, .btn {
+            .raised, .btn, .btn-small {
+                transition: ease 0.2s;
                 box-shadow: 0 5px 20px rgba(97, 97, 97, 0.16), 0 6px 6px rgba(97, 97, 97, 0.16);
             }
-            .lowered, .btn:hover {
+            .lowered, .btn:hover, .btn-small:hover {
                 box-shadow: 0 3px 6px rgba(97, 97, 97, 0.08), 0 3px 6px rgba(97, 97, 97, 0.12);
             }
 
@@ -126,13 +166,26 @@
                 padding-right: 32px;
                 border-radius: 200px;
             }
+            .btn-small {
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 16px;
+                padding-right: 16px;
+                border-radius: 200px;
+                cursor: pointer;
+                border: none;
+            }
 
         </style>
     </head>
     <body>
         <div class="container-fluid p-0">
-            <nav class="navbar navbar-light bg-light title bold pl-4 pr-4">
-                <a class="navbar-brand font-md color-dark-gray" href="/">Яecipe</a>
+            <nav class="navbar navbar-light bg-light bold pl-4 pr-4">
+                <a class="navbar-brand font-md title color-dark-gray" href="/">Яecipe</a>
+                <div>
+                    <button class="btn-small bg-white font-xs mr-2 browse-button">Learn</button>
+                    <button class="btn-small bg-red color-white font-xs quiz-button">Quiz Me</button>
+                </div>
             </nav>
             <div class="container">
                 {% block content %}

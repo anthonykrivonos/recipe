@@ -2,10 +2,9 @@ import json
 import requests
 import time
 import random
+import pandas as pd
 from string import ascii_letters, digits
-from flask import Flask
-from flask import render_template
-from flask import Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, abort
 app = Flask(__name__)
 
 ##
@@ -71,6 +70,20 @@ def get_cabinet(item):
     random.shuffle(new_cabinet)
     return new_cabinet
 
+def update_leaderboard(user_id, score, date):
+    global leaderboard
+    # Append to leaderboard
+    leaderboard = leaderboard.append({
+        "user_id": user_id,
+        "score": score,
+        "date": date
+    }, ignore_index = True)
+    leaderboard.to_pickle("./leaderboard.pkl")
+
+def get_leaderboard_json():
+    global leaderboard
+    return leaderboard.sort_values(by=['score'], ascending=False).to_dict('records')
+
 ##
 #   Data and Searching
 ##
@@ -86,33 +99,80 @@ f = open("cabinet.txt", "r")
 for ingredient in f:
     cabinet.append(alphanumeric(ingredient))
 
+# Load leaderboard
+try:
+    leaderboard = pd.read_pickle('./leaderboard.pkl')
+except:
+    leaderboard = pd.DataFrame(columns = ['user_id', 'score', 'date'])
+
 ##
 #   Webpage Serving
 ##
 
 @app.route('/')
 def index(id=None):
-    return render_template('index.html')
+    return render_template('index.html', count=len(data))
 
-@app.route('/browse', methods=['GET', 'POST'])
+@app.route('/browse')
 def browse():
-
     query = request.args.get('query')
     if query not in [ None, "" ]:
         matches = get_matches(query)
     else:
         matches = data
 
-    return render_template('browse.html', data=matches, tags=TAGS)
+    return render_template('browse.html', data=matches, tags=TAGS, count=len(data))
 
 @app.route('/learn/<id>')
 def learn(id=None):
     if id == None:
-        return render_template('learn.html', data=None)
+        return abort(404)
     id = int(id)
     data = None if id is None else get_by_id(id)
     cabinet = [] if id is None else get_cabinet(data)
-    return render_template('learn.html', data=data, cabinet=cabinet)
+    return render_template('learn.html', data=data, cabinet=cabinet, count=len(data))
+
+@app.route('/info/<id>')
+def info(id=None):
+    if id == None:
+        return abort(404)
+    id = int(id)
+    data = None if id is None else get_by_id(id)
+    return render_template('info.html', data=data, count=len(data))
+
+@app.route('/quiz/<ids>')
+def quiz(ids):
+    if ids is None:
+        return abort(500)
+    ids = ids.split(",")
+    data = [] if ids is None else [ get_by_id(int(id)) for id in ids ]
+    if len(data) is not 3:
+        return abort(404)
+    cabinets = [] if ids is None else [ get_cabinet(d) for d in data ]
+    return render_template('quiz.html', data=data, cabinets=cabinets, count=len(data))
+
+@app.route('/leaderboard')
+def leaderboard_page():
+    leaderboard = get_leaderboard_json()
+
+    print(leaderboard)
+    return render_template('leaderboard.html', leaderboard=leaderboard)
+
+@app.route('/add_to_leaderboard', methods=['POST'])
+def add_to_leaderboard():
+
+    json_data = request.get_json()
+    user_id = json_data["user_id"]
+    score = int(json_data["score"])
+    date = int(json_data["date"])
+
+    if not user_id or not score or not date:
+        return abort(500)
+
+    update_leaderboard(user_id, score, date)
+    leaderboard = get_leaderboard_json()
+
+    return jsonify(leaderboard=leaderboard)
 
 if __name__ == '__main__':
    app.run(debug = True)

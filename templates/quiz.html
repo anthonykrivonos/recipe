@@ -3,10 +3,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<script type="text/javascript" src="{{ url_for('static', filename = 'learn.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
 <script>
-    const dishData = {{data|tojson}}
-    const cabinet = {{cabinet|tojson}}
+    const dishes = {{data|tojson}}
+    const cabinets = {{cabinets|tojson}}
 </script>
 <style>
     /* List Styles */
@@ -71,7 +71,7 @@
         transform: translate(-50%, 0);
         z-index: -1;
     }
-    .cabinet {
+    #cabinet {
         height: 100%;
         justify-content: space-between !important;
     }
@@ -101,29 +101,36 @@
         text-align: center;
         width: 100%;
     }
+    .current-dishes {
+        width: 100%;
+        flex: 1;
+        align-self: stretch;
+    }
+    .other-dish {
+        flex: 1;
+        border-radius: 200px;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+    }
+    .mistakes-inner {
+        max-height: 10vh;
+        overflow-y: scroll;
+        border: solid 1px #efefefff;
+        border-radius: 16px;
+    }
 </style>
 
 <div class="container p-4">
     <div class="row mt-4">
         <div class="col-5">
-            <div class="d-flex flex-column">
-                <img class="dish-img raised" src="{{data.imageUrl}}" alt="{{data.name}}" />
-                <div class="text-uppercase color-red bold font-sm">Currently Making</div>
-                <div class="title bold font-lg">{{data.name}}</div>
-                <div class="title font-sm">(Russian: {{data.russianName}})</div>
-                <div class="font-sm color-gray mt-2 mb-3">{{data.tagline}}</div>
-                <div class="title font-md medium">Ingredients</div>
-                <div class="mt-2">
-                    <ul>
-                        {% for ingredient in data.ingredients %}
-                            <li class="color-gray">{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="align-self-end">
-                    <button id="back" class="btn bg-white mr-2">Go Back</button>
-                </div>
-            </div>
+            <div class="title bold font-xl">Quiz</div>
+            <div class="font-md color-gray mt-2">Complete three recipes to pass!</div>
+            <div class="text-uppercase color-red bold font-xs mt-1 mb-4">Time Elapsed: <span id="time"></span></div>
+            <div id="current_dish"></div>
+            <div id="other_dishes" class="other-dishes"></div>
+            <div id="mistakes"></div>
         </div>
         <div class="col-7 row">
             <div class="col-8 bowl-col d-flex flex-column">
@@ -134,16 +141,7 @@
                 </div>
             </div>
             <div class="col-4 cabinet-col">
-                <div class="cabinet d-flex flex-column">
-                    {% for ingredient in cabinet %}
-                        <div class="row">
-                            <div class="col-6 ingredient-col d-flex flex-row">
-                                <img class="ingredient" ingredient="{{ingredient}}" src="{{ url_for('static', filename = 'assets/'+ingredient+'.svg') }}" />
-                            </div>
-                            <div ingredient="{{ingredient}}" class="col-6 ingredient-name d-flex flex-row">{{ingredient}}</div>
-                        </div>
-                    {% endfor %}
-                </div>
+                <div id="cabinet" class="d-flex flex-column"></div>
                 <div class="bar bg-light-gray"></div>
             </div>
         </div>

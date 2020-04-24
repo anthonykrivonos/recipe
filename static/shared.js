@@ -24,7 +24,39 @@ const setQueryParam = (param, value) => {
  * Local Storage Functions
  */
 
+const USER_ID_KEY = "userId"
 const RECIPE_LIST_KEY = "recipeList"
+
+const setUserId = (userId = null) => {
+    try {
+        if (userId) {
+            localStorage.setItem(USER_ID_KEY, userId)
+        } else {
+            userId = localStorage.getItem(USER_ID_KEY)
+            if (!userId) {
+                userId = createUserId()
+                localStorage.setItem(USER_ID_KEY, userId)
+            }
+        }
+        return userId
+    } catch {}
+    return null
+}
+
+const createUserId = () => {
+    return `User_${1000 + Math.floor(Math.random() * 9000)}`
+}
+
+const getUserId = () => {
+    try {
+        return localStorage.getItem(USER_ID_KEY)
+    } catch {}
+    return null
+}
+
+const hasUserId = () => {
+    return getUserId() != null
+}
 
 const setLearnedRecipes = (recipeList) => {
     try {
@@ -51,8 +83,10 @@ const getLearnedRecipes = () => {
 
 const addLearnedRecipe = (id) => {
     const recipeList = getLearnedRecipes()
-    recipeList.push(id)
-    setLearnedRecipes(recipeList)
+    if (!recipeList.includes(id)) {
+        recipeList.push(id)
+        setLearnedRecipes(recipeList)
+    }
     return recipeList
 }
 
@@ -75,28 +109,62 @@ const hasLearnedRecipes = () => {
     return recipeList.length > 0
 }
 
-// const search = (text, onSuccess, onError) => {
-//     $.ajax({
-//         type: "POST",
-//         url: "/search",                
-//         dataType : "json",
-//         contentType: "application/json; charset=utf-8",
-//         data : JSON.stringify({
-//             search: text
-//         }),
-//         success: (result) => {
-//             const data = result["data"]
-//             onSuccess && onSuccess(data)
-//         },
-//         error: function(request, status, error){
-//             onError && onError(request, status, error)
-//             console.log("Error");
-//             console.log(request)
-//             console.log(status)
-//             console.log(error)
-//         }
-//     })
-// }
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+const shuffle = a => {
+    for (let i = a.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        let t = a[i]
+        a[i] = a[j]
+        a[j] = t
+    }
+    return a
+}
+
+/**
+ * Alerts
+ */
+
+const showAlert = (title, body, successText, otherText, onSuccess = ()=>{}, onOther = ()=>{}, onClose = ()=>{}) => {
+    const id = Math.floor(Date.now() % 1e8).toString()
+    $('body').append(`
+        <div id="${id}" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header p-4">
+                    <h5 class="modal-title">${title}</h5>
+                    <button id="${id}_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="font-md" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>${body}</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="${id}_success" type="button" class="btn bg-red color-white">${successText}</button>
+                    <button id="${id}_other" type="button" class="btn bg-light-gray" data-dismiss="modal">${otherText}</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    `)
+    $(`#${id}_success`).click(onSuccess)
+    $(`#${id}_other`).click(onOther)
+    $(`#${id}_close`).click(onClose)
+    $(`#${id}`).modal('show')
+    return $(`#${id}`)
+}
+
+/**
+ * String manipulation.
+ */
+
+const pad = (n, width, z = '0') => {
+    n = n.toString()
+    return n.length >= width ? n.slice(0, width) : new Array(width - n.length + 1).join(z) + n
+}
 
 /**
  * Confetti Functions

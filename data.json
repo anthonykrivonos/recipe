@@ -18,26 +18,31 @@
             {
                 "number": 1,
                 "action": "Pour in 3/4 cup flour.",
+                "quizAction": "Pour 3/4 cup of _____.",
                 "ingredient": "flour"
             },
             {
                 "number": 2,
                 "action": "Mix in 4 eggs.",
+                "quizAction": "Mix in 4 of ____.",
                 "ingredient": "eggs"
             },
             {
                 "number": 3,
                 "action": "Add 3 tbsp. of sugar.",
+                "quizAction": "Add 3 tbsp. of _____.",
                 "ingredient": "sugar"
             },
             {
                 "number": 4,
-                "action": "Add 1 tbsp of butter.",
+                "action": "Add 1 tbsp. of butter.",
+                "quizAction": "Add 1 tbsp. of ______.",
                 "ingredient": "butter"
             },
             {
                 "number": 5,
                 "action": "Bake, and then serve with sour cream.",
+                "quizAction": "Bake, and then serve with __________.",
                 "ingredient": "sour cream"
             }
         ]
@@ -61,26 +66,31 @@
             {
                 "number": 1,
                 "action": "Slice 3 beets.",
+                "quizAction": "Slice 3 _____.",
                 "ingredient": "beets"
             },
             {
                 "number": 2,
                 "action": "Peel and thinly slice 2 carrots.",
+                "quizAction": "Peel and thinly slice 2 _______.",
                 "ingredient": "carrots"
             },
             {
                 "number": 3,
                 "action": "Add olive oil into the mix.",
+                "quizAction": "Add _________ into the mix.",
                 "ingredient": "olive oil"
             },
             {
                 "number": 4,
                 "action": "Mix in 4 cups of chicken broth.",
+                "quizAction": "Mix in 4 cups of _____________.",
                 "ingredient": "chicken broth"
             },
             {
                 "number": 5,
                 "action": "Finally, add 6 cups of water.",
+                "quizAction": "Finally, add 6 cups of _____.",
                 "ingredient": "water"
             }
         ]
@@ -104,26 +114,31 @@
             {
                 "number": 1,
                 "action": "Cut bread into circles.",
+                "quizAction": "Cut _____ into circles.",
                 "ingredient": "bread"
             },
             {
                 "number": 2,
-                "action": "Beat 1 egg.",
+                "action": "Beat 1 egg(s).",
+                "quizAction": "Beat 1 ___.",
                 "ingredient": "eggs"
             },
             {
                 "number": 3,
                 "action": "Add 1/2 cup of milk.",
+                "quizAction": "Add 1/2 cup of ____.",
                 "ingredient": "milk"
             },
             {
                 "number": 4,
-                "action": "Pour 1 tbsp. of sugar in.",
+                "action": "Pour in 1 tbsp. of sugar.",
+                "quizAction": "Pour in 1 tbsp. of _____.",
                 "ingredient": "sugar"
             },
             {
                 "number": 5,
-                "action": "Lastly, add 1 tbsp. of oil.",
+                "action": "Lastly, add 1 tbsp. of olive oil.",
+                "quizAction": "Lastly, add 1 tbsp. of _________.",
                 "ingredient": "olive oil"
             }
         ]
@@ -147,26 +162,31 @@
             {
                 "number": 1,
                 "action": "Mix in 2/3 cup of milk.",
+                "quizAction": "Mix in 2/3 cup of ____.",
                 "ingredient": "milk"
             },
             {
                 "number": 2,
-                "action": "Beat 2 eggs in with the milk.",
+                "action": "Beat in 2 eggs.",
+                "quizAction": "Beat in 2 ____.",
                 "ingredient": "eggs"
             },
             {
                 "number": 3,
                 "action": "Pour in 7 cups of flour.",
+                "quizAction": "Pour in 7 cups of _____.",
                 "ingredient": "flour"
             },
             {
                 "number": 4,
                 "action": "Make into a dough, then add meat filling.",
+                "quizAction": "Make into a dough, then add ____________.",
                 "ingredient": "meat filling"
             },
             {
                 "number": 5,
                 "action": "Serve with sour cream.",
+                "quizAction": "Serve with __________.",
                 "ingredient": "sour cream"
             }
         ]
@@ -190,26 +210,31 @@
             {
                 "number": 1,
                 "action": "Cut 6 cups of pitted apricots.",
+                "quizAction": "Cut 6 cups of ________.",
                 "ingredient": "apricots"
             },
             {
                 "number": 2,
                 "action": "Add 4 cups of cut cherries.",
+                "quizAction": "Add 4 cups of cut ________.",
                 "ingredient": "cherries"
             },
             {
                 "number": 3,
                 "action": "Add 2 cups of blueberries.",
+                "quizAction": "Add 2 cups of ___________.",
                 "ingredient": "blueberries"
             },
             {
                 "number": 4,
                 "action": "Pour in 1 gallon of water.",
+                "quizAction": "Pour in 1 gallon of _____.",
                 "ingredient": "water"
             },
             {
                 "number": 5,
                 "action": "Finally, add 3/4 cup of sugar.",
+                "quizAction": "Finally, add 3/4 cup of _____.",
                 "ingredient": "sugar"
             }
         ]
