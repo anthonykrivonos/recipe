@@ -15,6 +15,8 @@ app = Flask(__name__)
 # Number of ingredients to show during learning and quizzes
 CABINET_SIZE = 10
 
+TAGS = [ "breakfast", "lunch", "dinner", "dessert", "drink" ]
+
 ##
 #   Data Helper Functions
 ##
@@ -35,21 +37,11 @@ def get_matches(query):
     matching_data = []
     if query == "":
         return data
-    query_strs = [ alphanumeric(q) for q in query.lower().split(" ") ]
+    query_strs = [ alphanumeric(q) for q in query.lower().split(",") ]
     for d in data:
-        all_match = True
         for q in query_strs:
-            # Property-based search
-            if ":" in q and len(q.split(":")) is 2:
-                prop = q.split(":")[0]
-                val = q.split(":")[1]
-                all_match = val in find_prop(prop, d).lower()
-                break
-            elif q not in d["keywords"]:
-                all_match = False
-                break
-        if all_match:
-            matching_data.append(d)
+            if q in d["tags"] or q in d["ingredients"]:
+                matching_data.append(d)
     return matching_data
 
 # Returns the n first items sorted in this order
@@ -98,8 +90,23 @@ for ingredient in f:
 #   Webpage Serving
 ##
 
+@app.route('/')
+def index(id=None):
+    return render_template('index.html')
+
+@app.route('/browse', methods=['GET', 'POST'])
+def browse():
+
+    query = request.args.get('query')
+    if query not in [ None, "" ]:
+        matches = get_matches(query)
+    else:
+        matches = data
+
+    return render_template('browse.html', data=matches, tags=TAGS)
+
 @app.route('/learn/<id>')
-def view(id=None):
+def learn(id=None):
     if id == None:
         return render_template('learn.html', data=None)
     id = int(id)

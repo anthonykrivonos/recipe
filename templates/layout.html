@@ -30,6 +30,14 @@
                 min-height: 100vh;
                 margin: 0;
             }
+            .footer {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                text-align: right;
+                padding: 5em;
+            }
 
             /* Font Styles */
             .title {
@@ -42,6 +50,12 @@
             .medium {
                 font-weight: 500;
             }
+            .font-huge {
+                font-size: 5em;
+            }
+            .font-xl {
+                font-size: 2.4em;
+            }
             .font-lg {
                 font-size: 1.8em;
             }
@@ -49,14 +63,17 @@
                 font-size: 1.2em;
             }
             .font-sm {
-                font-size: 0.8em;
+                font-size: 1em;
             }
             .font-xs {
-                font-size: 0.6em;
+                font-size: 0.8em;
             }
 
             /* Color Styles */
-            .color-red {
+            .color-dark-gray {
+                color: #434343 !important;
+            }
+            .color-red, a {
                 color: #ea9999ff !important;
             }
             .color-pink {
@@ -70,6 +87,9 @@
             }
             .color-light-gray {
                 color: #efefefff !important;
+            }
+            .color-white {
+                color: white !important;
             }
             .bg-red {
                 background-color: #ea9999ff !important;
@@ -86,13 +106,25 @@
             .bg-green {
                 background-color: #93c47d !important;
             }
+            .bg-white {
+                background-color: white !important;
+            }
         
             /* Shadow Styles */
-            .raised {
-                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            .raised, .btn {
+                box-shadow: 0 5px 20px rgba(97, 97, 97, 0.16), 0 6px 6px rgba(97, 97, 97, 0.16);
             }
-            .lowered {
-                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            .lowered, .btn:hover {
+                box-shadow: 0 3px 6px rgba(97, 97, 97, 0.08), 0 3px 6px rgba(97, 97, 97, 0.12);
+            }
+
+            /* Button Styles */
+            .btn {
+                padding-top: 16px;
+                padding-bottom: 16px;
+                padding-left: 32px;
+                padding-right: 32px;
+                border-radius: 200px;
             }
 
         </style>
@@ -100,14 +132,15 @@
     <body>
         <div class="container-fluid p-0">
             <nav class="navbar navbar-light bg-light title bold pl-4 pr-4">
-                <a class="navbar-brand font-md" href="#">Яecipe</a>
+                <a class="navbar-brand font-md color-dark-gray" href="/">Яecipe</a>
             </nav>
             <div class="container">
                 {% block content %}
                 {% endblock %}
-                <div class="font-xs">
+                <footer class="footer font-xs">
+                    Created by <a href="https://anthonykrivonos.com">Anthony Krivonos</a>.<br>
                     Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, and <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>.
-                </div>
+                </footer>
             </div>
         </div>
     </body>

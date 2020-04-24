@@ -1,4 +1,12 @@
 /**
+ * URL Functions
+ */
+
+const navigate = (url) => {
+    window.location = url
+}
+
+/**
  * Query Functions
  */
 
@@ -6,6 +14,65 @@ const getQueryParam = (param) => {
     const urlParams = new URLSearchParams(window.location.search)
     const paramValue = urlParams.get(param)
     return paramValue ? paramValue : ''
+}
+
+const setQueryParam = (param, value) => {
+    window.location.search = `${param}=${value}`
+}
+
+/**
+ * Local Storage Functions
+ */
+
+const RECIPE_LIST_KEY = "recipeList"
+
+const setLearnedRecipes = (recipeList) => {
+    try {
+        localStorage.setItem(RECIPE_LIST_KEY, JSON.stringify(recipeList))
+        return recipeList
+    } catch {
+        localStorage.setItem(RECIPE_LIST_KEY, JSON.stringify([]))
+        return []
+    }
+}
+
+const getLearnedRecipes = () => {
+    try {
+        const recipeListJSON = localStorage.getItem(RECIPE_LIST_KEY)
+        if (recipeListJSON) {
+            const recipeList = JSON.parse(recipeListJSON)
+            if (recipeList && Array.isArray(recipeList)) {
+                return recipeList
+            }
+        }
+    } catch {}
+    return []
+}
+
+const addLearnedRecipe = (id) => {
+    const recipeList = getLearnedRecipes()
+    recipeList.push(id)
+    setLearnedRecipes(recipeList)
+    return recipeList
+}
+
+const removeLearnedRecipe = (id) => {
+    const recipeList = getLearnedRecipes()
+    const idx = recipeList.indexOf(id)
+    if (idx > -1) {
+        recipeList.splice(idx, 1)
+    }
+    setLearnedRecipes(recipeList)
+    return recipeList
+}
+
+const hasLearnedRecipe = (id) => {
+    const recipeList = getLearnedRecipes()
+    return recipeList.indexOf(id) !== -1
+}
+
+const hasLearnedRecipes = () => {
+    return recipeList.length > 0
 }
 
 // const search = (text, onSuccess, onError) => {

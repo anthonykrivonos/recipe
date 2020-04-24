@@ -60,6 +60,8 @@ const updateStep = number => {
                 <div class="title bold font-md">Nice work!</div>
                 <div class="color-gray font-sm">You've just made ${dishData.name}.</div>
             `)
+            // Add this recipe to the list of learned recipes
+            addLearnedRecipe(dishData.id)
             confetti()
         }
     }
@@ -143,7 +145,7 @@ $(document).ready(() => {
     updateStep(1)
     
     
-    $('#bowl').droppable( {
+    $('#bowl-dropzone').droppable( {
         drop: onDrop,
         over: onDragOver,
         out: onDragOut,
