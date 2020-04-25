@@ -90,12 +90,12 @@ def get_leaderboard_json():
 
 # Load items from file
 data = []
-with open('data.json') as f:
+with open('data.json', encoding='utf8') as f:
     data = json.load(f)
 
 # Load cabinet from file
 cabinet = []
-f = open("cabinet.txt", "r")
+f = open("cabinet.txt", "r", encoding='utf8')
 for ingredient in f:
     cabinet.append(alphanumeric(ingredient))
 
