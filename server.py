@@ -146,7 +146,7 @@ def quiz(ids):
         return abort(500)
     ids = ids.split(",")
     data = [] if ids is None else [ get_by_id(int(id)) for id in ids ]
-    if len(data) is not 3:
+    if len(data) != 3:
         return abort(404)
     cabinets = [] if ids is None else [ get_cabinet(d) for d in data ]
     return render_template('quiz.html', data=data, cabinets=cabinets, count=len(data))
