@@ -170,7 +170,7 @@ const pad = (n, width, z = '0') => {
  * Confetti Functions
  */
 
-const confetti = (count = 150) => {
+const confetti = (count = 75) => {
     for (var i = 0; i < count; i++) {
         create(i)
     }

@@ -120,9 +120,71 @@
         border: solid 1px #efefefff;
         border-radius: 16px;
     }
+    #quizPage {
+        display: none;
+    }
+    #introPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #introPage > .container {
+        height: 80vh;
+    }
+    .carousel, .carousel-inner, .carousel-item {
+        height: 50vh;
+        width: 80vw;
+    }
+    .carousel-indicators li {
+        background-color: #434343;
+    }
+    .carousel-indicators .active {
+        background-color: black;
+    }
+    .carousel-control-next-icon {
+        color: green;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        height: 4em;
+        width: 8em;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        outline: black;
+        background-image: none;
+    }
+    .carousel-control-next-icon:after {
+        content: '►';
+        font-family: Helvetica;
+        font-size: 20px;
+        color: black;
+    }
+    .carousel-control-prev-icon:after {
+        content: '◀';
+        font-family: Helvetica;
+        font-size: 20px;
+        color: black;
+    }
+    .carousel-content {
+        padding-left: 8em;
+        padding-right: 8em;
+        padding-bottom: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        height: 100%;
+    }
+    .mistakes-example .mistakes-inner {
+        max-height: 14vh;
+    }
+    .mb--4 {
+        margin-bottom: -0.5em;
+    }
 </style>
 
-<div class="container p-4">
+<div id="quizPage" class="container p-4">
     <div class="row mt-4">
         <div class="col-5">
             <div class="title bold font-xl">Quiz</div>
@@ -134,7 +196,7 @@
         </div>
         <div class="col-7 row">
             <div class="col-8 bowl-col d-flex flex-column">
-                <div id="step" class="raised p-3 mt-4"></div>
+                <div id="step" class="raised p-3 mt-4 align-self-stretch"></div>
                 <div id="bowl-dropzone" class="bowl-col-bottom d-flex flex-column">
                     <img id="bowl" src="{{ url_for('static', filename = 'assets/bowl.svg') }}" />
                     <div id="ingredient-list" class="title mt-4 text-xs"></div>
@@ -147,4 +209,88 @@
         </div>
     </div>
 </div>
+
+<div id="introPage" class="p-4 d-flex flex-column align-items-center justify-content-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+        <div class="d-flex flex-column text-center">
+            <div class="title bold font-xl mb--4">Quiz</div>
+            <div id="indicators" class="carousel slide">
+                <ol class="carousel-indicators">
+                    <li data-target="#indicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#indicators" data-slide-to="1"></li>
+                    <li data-target="#indicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-content">
+                            <div class="d-flex flex-column align-items-stretch">
+                                <div class="other-dish d-flex flex-row justify-content-between bg-offwhite color-red p-2 mt-2 mb-2">
+                                    <div class="color-dark-gray">1. Syrniki</div>
+                                    <div class="bold">COMPLETED</div>
+                                </div>
+                                <div class="other-dish d-flex flex-row justify-content-between bg-light-gray color-dark-gray p-2 mt-2 mb-2">
+                                    <div class="color-dark-gray">2. Grenki</div>
+                                    <div class="bold">UP NEXT</div>
+                                </div>
+                                <div class="other-dish d-flex flex-row justify-content-between bg-light-gray color-dark-gray p-2 mt-2 mb-2">
+                                    <div class="color-dark-gray">3. Borscht</div>
+                                    <div class="bold">LAST ONE</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-caption d-md-block color-dark-gray pb-4">
+                            <div class="h5">3 Recipes</div>
+                            <div>You will be quizzed on <span class="bold">3 randomly selected recipes</span> that you have studied.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content">
+                            <div class="text-uppercase color-red bold font-lg">Time Elapsed: <span id="time-example"></span></div>
+                        </div>
+                        <div class="carousel-caption d-md-block color-dark-gray pb-4">
+                            <div class="h5">Go fast!</div>
+                            <div>The quiz is <span class="bold">timed</span> and the timer <span class="bold">will not stop</span> between each recipe. Your score grows <span class="bold">exponentially</span> the faster you complete the quiz.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content">
+                            <div class="mistakes-example">
+                                <div class="mistakes-inner">
+                                    <div class="other-dish d-flex flex-row justify-content-between color-dark-gray p-2">
+                                        <div>1. Added <span class="p-1 bg-red color-white">olive oil</span> instead of <span class="bold">sugar</span>.</div>
+                                        <div class="color-gray bold">Syrniki</div>
+                                    </div>
+                                    <div class="other-dish d-flex flex-row justify-content-between color-dark-gray p-2">
+                                        <div>2. Added <span class="p-1 bg-red color-white">sour cream</span> instead of <span class="bold">butter</span>.</div>
+                                        <div class="color-gray bold">Syrniki</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-caption d-md-block color-dark-gray pb-4">
+                            <div class="h5">Mistakes count.</div>
+                            <div>You will be slightly <span class="bold">penalized for mistakes</span> and will be given the correct ingredient afterwards.</div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#indicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#indicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="font-md mt-4">
+                <span class="bold">Press the button below</span> to start the timer.
+            </div>
+            <div class="mt-4 d-flex flex-row justify-content-center">
+                <button class="btn bg-red color-white start-quiz-button">Start Quiz</button>
+            </div>
+            <a href="/leaderboard" class="font-sm mt-3">Or, view the Leaderboard instead.</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

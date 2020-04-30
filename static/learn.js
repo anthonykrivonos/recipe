@@ -60,6 +60,7 @@ const updateStep = number => {
                 <div class="title bold font-md">Nice work!</div>
                 <div class="color-gray font-sm">You've just made ${dishData.name}.</div>
             `)
+            confetti()
             // Add this recipe to the list of learned recipes
             addLearnedRecipe(dishData.id)
             // Show an alert
@@ -83,7 +84,6 @@ const updateStep = number => {
                     }
                 }
             )
-            confetti()
         }
     }
 }

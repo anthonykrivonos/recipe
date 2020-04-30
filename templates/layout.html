@@ -35,14 +35,6 @@
                 min-height: 100vh;
                 margin: 0;
             }
-            .footer {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                text-align: right;
-                padding: 5em;
-            }
 
             /* Alert Styles */
             .modal-content {
@@ -84,22 +76,22 @@
                 font-weight: 500;
             }
             .font-huge {
-                font-size: 5em;
+                font-size: 4.5em;
             }
             .font-xl {
-                font-size: 2.4em;
+                font-size: 2.3em;
             }
             .font-lg {
-                font-size: 1.8em;
+                font-size: 1.7em;
             }
             .font-md {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
             .font-sm {
-                font-size: 1em;
+                font-size: 0.9em;
             }
             .font-xs {
-                font-size: 0.8em;
+                font-size: 0.7em;
             }
 
             /* Color Styles */
@@ -175,6 +167,9 @@
                 cursor: pointer;
                 border: none;
             }
+            .clickable {
+                cursor: pointer;
+            }
 
         </style>
     </head>
@@ -190,10 +185,6 @@
             <div class="container">
                 {% block content %}
                 {% endblock %}
-                <footer class="footer font-xs">
-                    Created by <a href="https://anthonykrivonos.com">Anthony Krivonos</a>.<br>
-                    Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, and <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>.
-                </footer>
             </div>
         </div>
     </body>

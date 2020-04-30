@@ -8,6 +8,16 @@
     .container {
         height: 70vh !important;
     }
+    .footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: right;
+        padding-bottom: 2em;
+        padding-left: 3em;
+        padding-right: 3em;
+    }
 </style>
 
 <div class="container p-4 d-flex flex-column align-items-stretch justify-content-center">
@@ -22,7 +32,11 @@
                 <button class="btn bg-red color-white quiz-button">Quiz Me</button>
             </div>
         </div>
-        <div class="font-sm mt-3">Created by Anthony Krivonos</div>
+        <a href="/leaderboard" class="font-sm mt-3">View the Leaderboard</a>
     </div>
 </div>
+<footer class="footer font-xs">
+    Created by <a href="https://anthonykrivonos.com">Anthony Krivonos</a>.<br>
+    Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>, and <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>.
+</footer>
 {% endblock %}

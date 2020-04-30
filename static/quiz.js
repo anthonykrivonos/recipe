@@ -66,7 +66,7 @@ const renderMistakes = () => {
             ${
                 mistakes.map((mistake, idx) => `
                     <div class="other-dish d-flex flex-row justify-content-between color-dark-gray p-2">
-                        <div>${idx + 1}. ${[ 'Added', 'Dropped', 'Put in' ][idx % 3]} <span class="p-1 bg-red color-white">${mistake.ingredient}</span> instead of <span class="bold">${mistake.correctIngredient}</span>.</div>
+                        <div>${idx + 1}. Added <span class="p-1 bg-red color-white">${mistake.ingredient}</span> instead of <span class="bold">${mistake.correctIngredient}</span>.</div>
                         <div class="color-gray bold">${mistake.dishName}</div>
                     </div>
                 `).join('')
@@ -147,6 +147,7 @@ const updateStep = number => {
                     <div class="title bold font-md">Congratulations!</div>
                     <div class="color-gray font-sm">You've completed the quiz.</div>
                 `)
+                confetti()
                 // Show an alert
                 let quizIds = getLearnedRecipes()
                 const canGoToQuiz = quizIds.length >= 3
@@ -154,7 +155,6 @@ const updateStep = number => {
                     () => navigate(`/leaderboard`),
                     () => navigate(`/`)
                 )
-                confetti()
             }
         }
     }
@@ -252,11 +252,11 @@ const initializeDragAndDrop = () => {
     })
 }
 
-const startTimer = () => {
+const startTimer = (t) => {
     startTime = new Date()
     timer = setInterval(() => {
         const dateDiff = new Date(new Date().getTime() - startTime.getTime())
-        $("#time").html(`${pad(dateDiff.getMinutes(), 2)}:${pad(dateDiff.getSeconds(), 2)}:${pad(dateDiff.getMilliseconds(), 2)}`)
+        t.html(`${pad(dateDiff.getMinutes(), 2)}:${pad(dateDiff.getSeconds(), 2)}:${pad(dateDiff.getMilliseconds(), 2)}`)
     }, 10)
 }
 
@@ -295,10 +295,19 @@ const addToLearderboard = (userId, score, date) => {
     })
 }
 
-/**
- *  Events
- */
-$(document).ready(() => {
+const togglePage = (showQuiz = false) => {
+    if (showQuiz) {
+        $("#quizPage").show()
+        $("#introPage").hide()
+    } else {
+        $("#quizPage").hide()
+        $("#introPage").show()
+    }
+}
+
+const startQuiz = () => {
+    togglePage(true)
+    stopTimer()
 
     // Set the current dish
     currentDish = dishes[currentDishNum]
@@ -312,5 +321,18 @@ $(document).ready(() => {
     
     initializeDragAndDrop()
 
-    startTimer()
+    startTimer($('#time'))
+}
+
+/**
+ *  Events
+ */
+$(document).ready(() => {
+
+    startTimer($('#time-example'))
+    $('.carousel').carousel("pause")
+
+    togglePage(false)
+    $(".start-quiz-button").click(startQuiz)
+    
 })
