@@ -297,8 +297,8 @@ const addToLearderboard = (userId, score, date) => {
 
 const togglePage = (showQuiz = false) => {
     if (showQuiz) {
-        $("#quizPage").show()
         $("#introPage").hide()
+        $("#quizPage").show()
     } else {
         $("#quizPage").hide()
         $("#introPage").show()

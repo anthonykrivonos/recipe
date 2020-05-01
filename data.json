@@ -54,7 +54,7 @@
         "tagline": "Sour soup made with beetroots or cabbage, topped with sour cream.",
         "description": "Borscht is a sour soup common in Eastern Europe and Northern Asia. In English, the word \"borscht\" is most often associated with the soup's variant of Russian or Ukrainian origin, made with beetroots as one of the main ingredients, which give the dish its distinctive red color.",
         "imageUrl": "https://natashaskitchen.com/wp-content/uploads/2018/10/Borscht-Recipe-2.jpg",
-        "tags": [ "lunch" ],
+        "tags": [ "lunch", "dinner" ],
         "ingredients": [
             "beets",
             "carrots",
@@ -150,7 +150,7 @@
         "tagline": "Minced meat or potato dumplings of a filling wrapped in thin, unleavened dough.",
         "description": "The first mention of a dish similar to dumplings comes from ancient Greece, but the Ural region seems to be the origin place of the pelmeni. The word pelmeni is derived from pel'n'an' (пельнянь)—literally \"ear bread\" in the native Finno-Ugric Komi and Udmurt languages.",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Pelmeni_Russian.jpg",
-        "tags": [ "lunch" ],
+        "tags": [ "lunch", "dinner" ],
         "ingredients": [
             "milk",
             "eggs",
@@ -236,6 +236,246 @@
                 "action": "Finally, add 3/4 cup of sugar.",
                 "quizAction": "Finally, add 3/4 cup of _____.",
                 "ingredient": "sugar"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Bouillon",
+        "russianName": "Бульон",
+        "tagline": "Seasoned meat, potatoes, noodles, and more in a chicken stock broth.",
+        "description": "Whereas chicken soup dates back centuries, the Russian edition features season meat and potatoes, documented originally in a Russian cookery book in the edition of 1897 (A Gift for young housewives).",
+        "imageUrl": "https://valentinascorner.com/wp-content/uploads/2015/05/Simple-Russian-Soup-1.jpg",
+        "tags": [ "lunch", "dinner" ],
+        "ingredients": [
+            "chicken broth",
+            "chicken",
+            "carrots",
+            "salt",
+            "leeks"
+        ],
+        "steps": [
+            {
+                "number": 1,
+                "action": "Pour 6 cups of chicken broth.",
+                "quizAction": "Pour 6 cups of _____________.",
+                "ingredient": "chicken broth"
+            },
+            {
+                "number": 2,
+                "action": "Add one sliced chicken.",
+                "quizAction": "Add one sliced _______.",
+                "ingredient": "chicken"
+            },
+            {
+                "number": 3,
+                "action": "Thinly slice 3 carrots.",
+                "quizAction": "Thinly slice 3 _______.",
+                "ingredient": "carrots"
+            },
+            {
+                "number": 4,
+                "action": "Mix everything and add salt.",
+                "quizAction": "Mix everything and add ____.",
+                "ingredient": "salt"
+            },
+            {
+                "number": 5,
+                "action": "Mince with 2 leeks.",
+                "quizAction": "Mince with 2 _____.",
+                "ingredient": "leeks"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Plov",
+        "russianName": "Плов",
+        "tagline": "Steamed brown or orange pilaf with chicken/beef and vegetables.",
+        "description": "Plov is a rice dish or, in some regions, a wheat dish, whose recipe usually involves cooking in stock or broth, adding spices and other ingredients such as vegetables or meat, and employing some technique for achieving cooked grains that do not adhere. At the time of the Abbasid Caliphate, such methods of cooking rice at first spread through a vast territory from India to Spain, and eventually to a wider world.",
+        "imageUrl": "https://www.myjewishlearning.com/wp-content/uploads/2007/08/PILAF.jpg",
+        "tags": [ "lunch", "dinner" ],
+        "ingredients": [
+            "beef",
+            "carrots",
+            "leeks",
+            "rice",
+            "paprika"
+        ],
+        "steps": [
+            {
+                "number": 1,
+                "action": "Cook 1 1/2 lbs. of cut beef.",
+                "quizAction": "Cook 1 1/2 lbs. of cut ____.",
+                "ingredient": "beef"
+            },
+            {
+                "number": 2,
+                "action": "Add two cut up leeks.",
+                "quizAction": "Add two cut up _____.",
+                "ingredient": "leeks"
+            },
+            {
+                "number": 3,
+                "action": "Mix in 4 sliced carrots.",
+                "quizAction": "Mix in 4 sliced _______.",
+                "ingredient": "carrots"
+            },
+            {
+                "number": 4,
+                "action": "Mix with 4 cups of yellow rice.",
+                "quizAction": "Mix with 4 cups of yellow ____.",
+                "ingredient": "rice"
+            },
+            {
+                "number": 5,
+                "action": "Sprinkle 2 tbsp. of paprika.",
+                "quizAction": "Sprinkle 2 tbsp. of _______.",
+                "ingredient": "paprika"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Pryaniki",
+        "russianName": "Пряники",
+        "tagline": "Known as “Russian gingerbread,” these are cookies flavored with spices.",
+        "description": "A pryanik is a Russian gingerbread cookie that often accompanies tea at any time of the year.",
+        "imageUrl": "https://www.olgasflavorfactory.com/wp-content/uploads/2014/12/Pryaniki-Russian-Honey-Spice-Cookies-1-13-260x195.jpg",
+        "tags": [ "dessert" ],
+        "ingredients": [
+            "flour",
+            "eggs",
+            "butter",
+            "cinnamon",
+            "ginger"
+        ],
+        "steps": [
+            {
+                "number": 1,
+                "action": "Pour 3 cups of flour.",
+                "quizAction": "Pour 3 cups of _____.",
+                "ingredient": "flour"
+            },
+            {
+                "number": 2,
+                "action": "Whisk in 2 large eggs.",
+                "quizAction": "Whisk in 2 large ____.",
+                "ingredient": "eggs"
+            },
+            {
+                "number": 3,
+                "action": "Melt in 3 oz. of butter.",
+                "quizAction": "Melt in 3 oz. of ______.",
+                "ingredient": "butter"
+            },
+            {
+                "number": 4,
+                "action": "Sprinkle 1/2 tspn. of ginger.",
+                "quizAction": "Sprinkle 1/2 tspn. of ______.",
+                "ingredient": "ginger"
+            },
+            {
+                "number": 5,
+                "action": "Finish with 1/2 tspn. of cinnamon.",
+                "quizAction": "Finish with 1/2 tspn. of _______.",
+                "ingredient": "cinnamon"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Kasha",
+        "russianName": "Каша",
+        "tagline": "A staple breakfast food with buckwheat groats.",
+        "description": "Kasha generally refers to roasted whole-grain buckwheat or buckwheat groats. However, in Slavic Europe, it refers to porridge in general and can be made from buckwheat or any cereal wheat, barley, oats, millet and rye. At least 1,000 years old, kasha is one of the oldest known dishes in Central European and Eastern European cuisine.",
+        "imageUrl": "https://natashaskitchen.com/wp-content/uploads/2015/02/How-to-Cook-Buckwheat-Kasha-7.jpg",
+        "tags": [ "breakfast" ],
+        "ingredients": [
+            "oats",
+            "water",
+            "olive oil",
+            "salt",
+            "butter"
+        ],
+        "steps": [
+            {
+                "number": 1,
+                "action": "Wash and then add 1 cup of oats.",
+                "quizAction": "Wash and then add 1 cup of ____.",
+                "ingredient": "oats"
+            },
+            {
+                "number": 2,
+                "action": "Combine with 1 3/4 cups of water.",
+                "quizAction": "Combine with 1 3/4 cups of _____.",
+                "ingredient": "water"
+            },
+            {
+                "number": 3,
+                "action": "Add 1 tbsp. of olive oil.",
+                "quizAction": "Add 1 tbsp. of _________.",
+                "ingredient": "olive oil"
+            },
+            {
+                "number": 4,
+                "action": "Sprinkle 1/2 tbsp. of salt.",
+                "quizAction": "Sprinkle 1/2 tbsp. of salt.",
+                "ingredient": "salt"
+            },
+            {
+                "number": 5,
+                "action": "Fry and top with 1/3 tbsp. of butter.",
+                "quizAction": "Fry and top with 1/3 tbsp. of ______.",
+                "ingredient": "butter"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Kefir (flavored)",
+        "russianName": "Кефир",
+        "tagline": "Thick fermented milk drink that resembles GoGurt.",
+        "description": "Kefir is a fermented milk drink similar to a thin yogurt that is made from kefir grains, a specific type of mesophilic symbiotic culture. The drink originated in the North Caucasus, Eastern Europe and Russia.",
+        "imageUrl": "https://www.liveeatlearn.com/wp-content/uploads/2020/04/how-to-make-kefir-vert.jpg",
+        "tags": [ "drink", "breakfast" ],
+        "ingredients": [
+            "kefir grains",
+            "milk",
+            "water",
+            "strawberries",
+            "blueberries"
+        ],
+        "steps": [
+            {
+                "number": 1,
+                "action": "Start with 1 tbsp. of kefir grains.",
+                "quizAction": "Start with 1 tbsp. of ____________.",
+                "ingredient": "kefir grains"
+            },
+            {
+                "number": 2,
+                "action": "Mix in 3 1/2 cups of milk.",
+                "quizAction": "Mix in 3 1/2 cups of ____.",
+                "ingredient": "milk"
+            },
+            {
+                "number": 3,
+                "action": "Ferment and add 1/2 a cup of water.",
+                "quizAction": "Ferment and add 1/2 a cup of _____.",
+                "ingredient": "water"
+            },
+            {
+                "number": 4,
+                "action": "Blend in 4 strawberries.",
+                "quizAction": "Blend in 4 ____________.",
+                "ingredient": "strawberries"
+            },
+            {
+                "number": 5,
+                "action": "Lastly blend in 1/3 cups of blueberries.",
+                "quizAction": "Lastly blend in 1/3 cups of ___________.",
+                "ingredient": "blueberries"
             }
         ]
     }
