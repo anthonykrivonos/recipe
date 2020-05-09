@@ -65,6 +65,11 @@
                         <div class="bg-light-gray tag">{{ tag }}</div>
                     {% endfor %}
                 </div>
+                <div class="title font-md">Pronunciation</div>
+                <audio class="mt-2 mb-4" controls>
+                    <source src="{{ url_for('static', filename = 'audio/'+data.name.lower()+'.mp3') }}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
                 <div class="title font-md">Origin</div>
                 <div class="font-sm color-gray mt-2 mb-3">{{data.description}}</div>
                 <div class="title font-md medium">Ingredients</div>

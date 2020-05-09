@@ -23,10 +23,10 @@
         margin-left: -1.4em;
     }    
     .dish-img {
-        width: 18vw;
-        height: 18vw;
-        min-width: 140px;
-        min-height: 140px;
+        width: 12vw;
+        height: 12vw;
+        min-width: 120px;
+        min-height: 120px;
         border-radius: 50%;
         margin-bottom: -3vw;
         align-self: flex-end;
@@ -116,6 +116,7 @@
     }
     .mistakes-inner {
         max-height: 10vh;
+        min-height: 10vh;
         overflow-y: scroll;
         border: solid 1px #efefefff;
         border-radius: 16px;
@@ -129,12 +130,19 @@
         align-items: center;
         justify-content: center;
     }
-    #introPage > .container {
-        height: 80vh;
+    #introPage .container {
+        height: 90vh;
     }
     .carousel, .carousel-inner, .carousel-item {
         height: 50vh;
         width: 80vw;
+    }
+    .carousel {
+        border: solid 1px lightgray;
+        border-radius: 4em;
+    }
+    .carousel-inner {
+        margin-top: -1em;
     }
     .carousel-indicators li {
         background-color: #434343;
@@ -179,9 +187,6 @@
     .mistakes-example .mistakes-inner {
         max-height: 14vh;
     }
-    .mb--4 {
-        margin-bottom: -0.5em;
-    }
 </style>
 
 <div id="quizPage" class="container p-4">
@@ -214,7 +219,7 @@
     <div class="p-4 d-flex flex-column align-items-center justify-content-center">
         <div class="container d-flex flex-column align-items-center justify-content-center">
             <div class="d-flex flex-column text-center">
-                <div class="title bold font-xl mb--4">Quiz</div>
+                <div class="title bold font-xl mb-4">Quiz</div>
                 <div id="indicators" class="carousel slide">
                     <ol class="carousel-indicators">
                         <li data-target="#indicators" data-slide-to="0" class="active"></li>

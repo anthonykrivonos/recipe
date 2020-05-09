@@ -1,5 +1,4 @@
 import json
-import requests
 import time
 import random
 import pandas as pd
@@ -33,14 +32,16 @@ def find_prop(prop, dict):
 
 # Returns all data that match the query string, using the 'keyword' property of each object
 def get_matches(query):
+    matching_ids = []
     matching_data = []
     if query == "":
         return data
     query_strs = [ alphanumeric(q) for q in query.lower().split(",") ]
     for d in data:
         for q in query_strs:
-            if q in d["tags"] or q in d["ingredients"]:
+            if d["id"] not in matching_ids and (q in d["tags"] or q in d["ingredients"]):
                 matching_data.append(d)
+                matching_ids.append(d["id"])
     return matching_data
 
 # Returns the n first items sorted in this order
