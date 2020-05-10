@@ -61,7 +61,7 @@ const addMistake = ingredient => {
 
 const renderMistakes = () => {
     $('#mistakes').html(`
-        <div class="bold font-sm mt-4">${mistakes.length === 0} Mistake${mistakes.length !== 1 ? 's' : ''}</div>
+        <div class="bold font-sm mt-4">${mistakes.length === 0 ? 'No' : mistakes.length} Mistake${mistakes.length !== 1 ? 's' : ''}</div>
         <div class="mistakes-inner mt-3 p-2">
             ${
                 mistakes.map((mistake, idx) => `
